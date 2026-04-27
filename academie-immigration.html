@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Académie de l'Immigration — Formation professionnelle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0b1f3a;
+  --gold: #c9a227;
+  --gold2: #e2bd45;
+  --ink: #1c2b3a;
+  --white: #ffffff;
+  --grey: #888;
+  --light: #f7f6f3;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--ink); color: var(--white); overflow-x: hidden; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--gold);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(11,31,58,.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 0 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--white); text-decoration: none;
+  letter-spacing: .5px;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,.55);
+  text-decoration: none; font-size: 12px;
+  font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--gold); color: var(--navy) !important;
+  padding: 10px 24px; font-weight: 600 !important;
+  border-radius: 2px; transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--gold2) !important; }
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hero {
+  position: relative;
+  height: 100vh; min-height: 720px;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(11,31,58,.93) 40%, rgba(11,31,58,.55) 100%),
+    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80') center/cover;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 100px; max-width: 760px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 30px;
+}
+.hero-eyebrow-line { width: 36px; height: 1px; background: var(--gold); }
+.hero-eyebrow span {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold);
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 6vw, 88px);
+  font-weight: 300; line-height: 1.05;
+  color: var(--white); margin-bottom: 28px;
+  letter-spacing: -.5px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 300; }
+.hero p {
+  font-size: 16px; font-weight: 300;
+  line-height: 1.75; color: rgba(255,255,255,.6);
+  margin-bottom: 44px; max-width: 500px;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--gold); color: var(--navy);
+  padding: 17px 40px; font-weight: 600;
+  font-size: 13px; letter-spacing: 1.5px;
+  text-transform: uppercase; text-decoration: none;
+  border-radius: 2px; transition: background .2s;
+}
+.btn-primary:hover { background: var(--gold2); }
+.btn-ghost-white {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,.25); color: var(--white);
+  padding: 17px 40px; font-weight: 400;
+  font-size: 13px; letter-spacing: 1.5px;
+  text-transform: uppercase; text-decoration: none;
+  border-radius: 2px; transition: border-color .2s;
+}
+.btn-ghost-white:hover { border-color: var(--white); }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Right image stack */
+.hero-imgs {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 42%; display: grid;
+  grid-template-rows: 1fr 1fr; gap: 3px;
+  overflow: hidden;
+}
+.hero-img-panel { overflow: hidden; position: relative; }
+.hero-img-panel img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: brightness(.6);
+}
+
+/* ══════════════════════════════
+   STATS STRIP
+══════════════════════════════ */
+.stats-strip {
+  background: var(--white);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid #e8e8e8;
+}
+.stat-block {
+  padding: 44px 40px;
+  border-right: 1px solid #e8e8e8;
+  text-align: center;
+}
+.stat-block:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px; font-weight: 300;
+  color: var(--navy); line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-num span { color: var(--gold); }
+.stat-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: #999;
+}
+
+/* ══════════════════════════════
+   SECTION COMMONS
+══════════════════════════════ */
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 18px;
+}
+.section-eyebrow .line { width: 28px; height: 1px; background: var(--gold); }
+.section-eyebrow span {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 300; line-height: 1.08;
+  color: var(--white); letter-spacing: -.3px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-title.dark { color: var(--navy); }
+.section-body {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.8; color: rgba(255,255,255,.55);
+  max-width: 560px;
+}
+.section-body.dark { color: #666; }
+
+/* ══════════════════════════════
+   QUI SOMMES-NOUS — IMAGE SPLIT
+══════════════════════════════ */
+.about-section {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 700px;
+}
+.about-img {
+  position: relative; overflow: hidden;
+}
+.about-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: brightness(.75);
+}
+.about-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 70%, rgba(14,14,14,1) 100%);
+}
+.about-content {
+  background: var(--navy);
+  padding: 90px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.about-content p {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.85; color: rgba(255,255,255,.55);
+  margin-top: 28px;
+}
+.about-tag {
+  display: inline-block; margin-top: 32px;
+  border: 1px solid rgba(201,162,39,.4);
+  padding: 10px 22px; font-size: 11px;
+  font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+}
+
+/* ══════════════════════════════
+   PROGRAMMES — 3 CARDS + image BG
+══════════════════════════════ */
+.programmes-section {
+  position: relative;
+  padding: 110px 80px;
+  background: var(--light);
+}
+.programmes-section::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 45%; height: 100%;
+  background:
+    url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80') center/cover;
+  opacity: .12;
+}
+.programmes-inner { position: relative; z-index: 2; max-width: 1300px; margin: auto; }
+.programmes-head { margin-bottom: 64px; }
+.programmes-head .section-title { color: var(--navy); }
+.programmes-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.prog-card {
+  background: var(--white);
+  border: 1px solid #e0dbd0;
+  padding: 44px 38px 38px;
+  display: flex; flex-direction: column;
+  transition: box-shadow .3s, transform .3s;
+  position: relative; overflow: hidden;
+}
+.prog-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s;
+}
+.prog-card:hover::before { transform: scaleX(1); }
+.prog-card:hover {
+  box-shadow: 0 24px 60px rgba(0,0,0,.12);
+  transform: translateY(-6px);
+}
+.prog-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px; font-weight: 300;
+  color: #e8e3d8; line-height: 1;
+  margin-bottom: 18px;
+}
+.prog-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 600;
+  color: var(--navy); line-height: 1.2;
+  margin-bottom: 10px;
+}
+.prog-card .prog-sub {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.prog-card p {
+  font-size: 14px; font-weight: 300;
+  line-height: 1.75; color: #666;
+  margin-bottom: 24px; flex: 1;
+}
+.prog-points { list-style: none; margin-bottom: 36px; }
+.prog-points li {
+  font-size: 13px; color: #555;
+  padding: 8px 0; border-bottom: 1px solid #f0ece4;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.prog-points li::before {
+  content: '—'; color: var(--gold);
+  font-weight: 400; flex-shrink: 0;
+  margin-top: 1px;
+}
+.prog-btn {
+  display: block; text-align: center;
+  background: var(--navy); color: var(--white);
+  padding: 14px 24px; font-size: 12px;
+  font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; text-decoration: none;
+  transition: background .2s;
+}
+.prog-btn:hover { background: var(--gold); color: var(--navy); }
+
+/* ══════════════════════════════
+   POURQUOI — IMAGE MOSAIC
+══════════════════════════════ */
+.why-section {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 800px;
+}
+.why-mosaic {
+  display: grid; grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr; gap: 3px;
+  overflow: hidden;
+}
+.why-mosaic img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: brightness(.7);
+  transition: filter .4s, transform .5s;
+}
+.why-mosaic img:hover { filter: brightness(.55); transform: scale(1.04); }
+.why-content {
+  background: var(--navy);
+  padding: 90px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.why-content .section-body { margin-top: 24px; }
+.pillars { margin-top: 52px; display: flex; flex-direction: column; gap: 0; }
+.pillar {
+  padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,.07);
+  display: grid; grid-template-columns: 80px 1fr; gap: 20px;
+  align-items: start;
+}
+.pillar-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px; font-weight: 300;
+  color: rgba(201,162,39,.25); line-height: 1;
+  padding-top: 2px;
+}
+.pillar h4 {
+  font-size: 14px; font-weight: 600;
+  letter-spacing: .5px; color: var(--white);
+  margin-bottom: 6px;
+}
+.pillar p {
+  font-size: 13px; font-weight: 300;
+  line-height: 1.7; color: rgba(255,255,255,.45);
+}
+
+/* ══════════════════════════════
+   RÉSULTATS — FULL BLEED
+══════════════════════════════ */
+.results-section {
+  position: relative; overflow: hidden;
+  padding: 120px 80px;
+}
+.results-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(11,31,58,.92), rgba(11,31,58,.92)),
+    url('https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80') center/cover;
+}
+.results-inner {
+  position: relative; z-index: 2;
+  max-width: 1300px; margin: auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+.results-left .section-body { margin-top: 24px; }
+.before-after {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+  margin-top: 50px;
+}
+.ba-col {
+  padding: 36px 30px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+}
+.ba-col.after { background: rgba(201,162,39,.07); border-color: rgba(201,162,39,.2); }
+.ba-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.ba-col .ba-label { color: #555; }
+.ba-col.after .ba-label { color: var(--gold); }
+.ba-item {
+  font-size: 13px; font-weight: 300;
+  line-height: 1.6; color: rgba(255,255,255,.5);
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+  display: flex; gap: 10px;
+}
+.ba-item::before { content: '—'; color: rgba(255,255,255,.2); flex-shrink: 0; }
+.ba-col.after .ba-item { color: rgba(255,255,255,.75); }
+.ba-col.after .ba-item::before { content: '✓'; color: var(--gold); }
+.results-right { display: flex; flex-direction: column; gap: 16px; }
+.result-point {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 26px 28px;
+  background: rgba(255,255,255,.04);
+  border-left: 2px solid var(--gold);
+  transition: background .2s;
+}
+.result-point:hover { background: rgba(255,255,255,.07); }
+.rp-icon {
+  font-size: 20px; flex-shrink: 0; margin-top: 2px; opacity: .7;
+}
+.result-point p {
+  font-size: 14px; font-weight: 300;
+  line-height: 1.6; color: rgba(255,255,255,.65);
+}
+
+/* ══════════════════════════════
+   À QUI — IMAGE + LISTE
+══════════════════════════════ */
+.audience-section {
+  background: var(--white);
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+.audience-img { position: relative; overflow: hidden; }
+.audience-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.audience-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(247,246,243,0) 60%, rgba(247,246,243,1) 100%);
+}
+.audience-content {
+  padding: 90px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.audience-content .section-title { color: var(--navy); font-size: 46px; }
+.audience-content .section-body { color: #666; margin-top: 20px; }
+.audience-list { margin-top: 36px; display: flex; flex-direction: column; gap: 0; }
+.audience-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 16px 0; border-bottom: 1px solid #eee;
+}
+.audience-item-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0; margin-top: 6px;
+}
+.audience-item p {
+  font-size: 14px; font-weight: 300;
+  line-height: 1.6; color: #444;
+}
+.audience-not {
+  margin-top: 28px; padding: 20px 22px;
+  background: #f7f6f3; border-left: 2px solid #ddd;
+  font-size: 13px; font-weight: 300; color: #888;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════
+   OUTILS — DARK GRID
+══════════════════════════════ */
+.tools-section {
+  background: var(--navy);
+  padding: 110px 80px;
+  position: relative; overflow: hidden;
+}
+.tools-section::after {
+  content: '';
+  position: absolute; bottom: 0; right: 0;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,162,39,.08) 0%, transparent 70%);
+}
+.tools-inner { max-width: 1300px; margin: auto; }
+.tools-head { text-align: center; margin-bottom: 70px; }
+.tools-head .section-body {
+  margin: 16px auto 0; text-align: center;
+}
+.tools-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.tool-item {
+  background: var(--navy);
+  padding: 50px 44px;
+  transition: background .3s;
+}
+.tool-item:hover { background: rgba(255,255,255,.05); }
+.tool-item-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 300;
+  color: rgba(201,162,39,.2); line-height: 1;
+  margin-bottom: 20px;
+}
+.tool-item h4 {
+  font-size: 15px; font-weight: 600;
+  color: var(--white); margin-bottom: 10px;
+}
+.tool-item p {
+  font-size: 13px; font-weight: 300;
+  line-height: 1.7; color: rgba(255,255,255,.4);
+}
+
+/* ══════════════════════════════
+   PROCESSUS — TIMELINE
+══════════════════════════════ */
+.process-section {
+  position: relative; overflow: hidden;
+  padding: 120px 80px;
+}
+.process-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(11,31,58,.94), rgba(11,31,58,.94)),
+    url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1800&q=80') center/cover;
+}
+.process-inner {
+  position: relative; z-index: 2;
+  max-width: 1300px; margin: auto;
+}
+.process-head { margin-bottom: 70px; }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; background: rgba(255,255,255,.04);
+}
+.step {
+  background: rgba(11,31,58,.7);
+  padding: 48px 36px;
+  position: relative; overflow: hidden;
+  transition: background .3s;
+}
+.step:hover { background: rgba(255,255,255,.06); }
+.step::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s;
+}
+.step:hover::after { transform: scaleX(1); }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px; font-weight: 300;
+  color: rgba(201,162,39,.1); line-height: 1;
+  margin-bottom: 20px;
+}
+.step h4 {
+  font-size: 14px; font-weight: 600;
+  color: var(--white); margin-bottom: 10px;
+  letter-spacing: .3px;
+}
+.step p {
+  font-size: 13px; font-weight: 300;
+  line-height: 1.7; color: rgba(255,255,255,.4);
+}
+
+/* ══════════════════════════════
+   FAQ
+══════════════════════════════ */
+.faq-section {
+  background: var(--light);
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+.faq-img { position: relative; overflow: hidden; }
+.faq-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: brightness(.7);
+}
+.faq-content {
+  padding: 90px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.faq-content .section-title { color: var(--navy); font-size: 46px; }
+.faq-list { margin-top: 44px; }
+.faq-item {
+  border-top: 1px solid #ddd; cursor: pointer;
+}
+.faq-q {
+  padding: 22px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500; color: #222;
+  user-select: none;
+}
+.faq-q .faq-icon {
+  font-size: 20px; color: var(--gold);
+  transition: transform .3s; flex-shrink: 0;
+  font-weight: 300; line-height: 1;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s;
+  font-size: 13px; font-weight: 300;
+  line-height: 1.75; color: #666;
+  padding-bottom: 0;
+}
+.faq-item.open .faq-a {
+  max-height: 200px; padding-bottom: 22px;
+}
+
+/* ══════════════════════════════
+   CTA FINALE
+══════════════════════════════ */
+.cta-section {
+  position: relative; overflow: hidden;
+  min-height: 640px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+}
+.cta-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(11,31,58,.93), rgba(11,31,58,.9)),
+    url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=1800&q=80') center/cover;
+}
+.cta-content {
+  position: relative; z-index: 2;
+  padding: 80px 40px; max-width: 800px;
+}
+.cta-divider { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 36px; }
+.cta-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 6vw, 78px);
+  font-weight: 300; color: var(--white);
+  line-height: 1.08; margin-bottom: 22px;
+}
+.cta-content h2 em { color: var(--gold); font-style: italic; }
+.cta-content p {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.8; color: rgba(255,255,255,.55);
+  margin-bottom: 48px; max-width: 540px; margin-left: auto; margin-right: auto;
+}
+.cta-note {
+  margin-top: 24px;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 1.5px; color: rgba(255,255,255,.3);
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer {
+  background: #071525;
+  padding: 60px 80px 30px;
+}
+.footer-inner {
+  max-width: 1300px; margin: auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px; padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.ft-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: var(--white);
+}
+.ft-logo span { color: var(--gold); }
+.ft-desc {
+  margin-top: 16px;
+  font-size: 13px; font-weight: 300;
+  line-height: 1.75; color: rgba(255,255,255,.35);
+}
+.ft-col h4 {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 22px;
+}
+.ft-col a {
+  display: block; color: rgba(255,255,255,.4);
+  text-decoration: none; font-size: 13px;
+  font-weight: 300; margin-bottom: 11px;
+  transition: color .2s;
+}
+.ft-col a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: 1300px; margin: 28px auto 0;
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: rgba(255,255,255,.18);
+  letter-spacing: .5px;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px) {
+  .hero-imgs { display: none; }
+  .hero-bg { background: linear-gradient(rgba(11,31,58,.95), rgba(11,31,58,.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80') center/cover; }
+  .programmes-grid { grid-template-columns: 1fr; }
+  .results-inner { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+}
+@media(max-width:800px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero-content { padding: 0 30px; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+  .about-section, .why-section, .audience-section, .faq-section { grid-template-columns: 1fr; }
+  .about-img, .why-mosaic, .faq-img, .audience-img { height: 340px; }
+  .about-content, .why-content, .faq-content, .audience-content { padding: 60px 30px; }
+  .why-mosaic { grid-template-columns: 1fr 1fr; }
+  .programmes-section, .results-section, .tools-section, .process-section { padding: 70px 24px; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .before-after { grid-template-columns: 1fr; }
+  footer { padding: 50px 24px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">Formation continue admissible — Collège des consultants en immigration</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Académie de <span>l'Immigration</span></a>
+  <div class="nav-links">
+    <a href="#programmes">Programmes</a>
+    <a href="#pourquoi">Pourquoi nous</a>
+    <a href="#resultats">Résultats</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" class="nav-cta">Accéder à la formation</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Formation professionnelle en immigration</span>
+    </div>
+    <h1>Maîtrisez<br>l'immigration.<br><em>Dossier par dossier.</em></h1>
+    <p>Une formation structurée, concrète et directement applicable — conçue pour former des professionnels capables d'analyser et de traiter des dossiers réels avec rigueur.</p>
+    <div class="hero-btns">
+      <a href="#programmes" class="btn-primary">Accéder à la formation</a>
+      <a href="#pourquoi" class="btn-ghost-white">En savoir plus</a>
+    </div>
+  </div>
+  <div class="hero-imgs">
+    <div class="hero-img-panel">
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="">
+    </div>
+    <div class="hero-img-panel">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats-strip">
+  <div class="stat-block">
+    <div class="stat-num">500<span>+</span></div>
+    <div class="stat-label">Questions pratiques</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Programmes distincts</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-num">100<span>%</span></div>
+    <div class="stat-label">Cas réels</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-num"><span style="font-size:32px">CCIC</span></div>
+    <div class="stat-label">Formation admissible</div>
+  </div>
+</div>
+
+<!-- ══ QUI SOMMES-NOUS ══ -->
+<section class="about-section">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80" alt="">
+    <div class="about-img-overlay"></div>
+  </div>
+  <div class="about-content">
+    <div class="section-eyebrow"><div class="line"></div><span>Qui sommes-nous</span></div>
+    <h2 class="section-title">Une approche<br><em>ancrée dans la réalité.</em></h2>
+    <p class="section-body">L'Académie de l'Immigration est une plateforme de formation spécialisée destinée aux consultants en immigration, ainsi qu'aux personnes qui souhaitent le devenir.</p>
+    <p style="font-size:14px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.45);margin-top:18px;">Notre mission est d'offrir une formation complète, structurée et concrète, qui va bien au-delà de la théorie. Nous formons des professionnels capables de comprendre, analyser et traiter des dossiers avec rigueur et méthode.</p>
+    <div class="about-tag">Admissible — Formation continue CCIC</div>
+  </div>
+</section>
+
+<!-- ══ PROGRAMMES ══ -->
+<section class="programmes-section" id="programmes">
+  <div class="programmes-inner">
+    <div class="programmes-head">
+      <div class="section-eyebrow"><div class="line"></div><span>Nos programmes</span></div>
+      <h2 class="section-title dark">Choisissez votre<br><em style="color:var(--gold)">parcours.</em></h2>
+    </div>
+    <div class="programmes-grid">
+
+      <!-- Card 1 -->
+      <div class="prog-card">
+        <div class="prog-num">01</div>
+        <div class="prog-sub">Formations pratiques</div>
+        <h3>Traiter de vrais dossiers en immigration</h3>
+        <p>Des formations qui vous guident à travers des situations concrètes afin de développer des réflexes professionnels directement applicables.</p>
+        <ul class="prog-points">
+          <li>Cas pratiques inspirés de situations réelles</li>
+          <li>Articles de loi applicables</li>
+          <li>Formulaires et liens gouvernementaux</li>
+          <li>Documents de soutien à préparer</li>
+          <li>Stratégies pour présenter un dossier solide</li>
+        </ul>
+        <a href="#" class="prog-btn">Je veux me former</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="prog-card">
+        <div class="prog-num">02</div>
+        <div class="prog-sub">Formation continue</div>
+        <h3>500 questions pour maîtriser votre niveau</h3>
+        <p>Un outil conçu pour renforcer vos connaissances, tester votre niveau et identifier précisément vos points à améliorer.</p>
+        <ul class="prog-points">
+          <li>500 questions pratiques</li>
+          <li>Révision ciblée par thème</li>
+          <li>Validation des connaissances</li>
+          <li>Préparation autonome</li>
+          <li>Questions créées indépendamment</li>
+        </ul>
+        <a href="#" class="prog-btn">Accéder aux questions</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="prog-card">
+        <div class="prog-num">03</div>
+        <div class="prog-sub">Spécialisation CISR</div>
+        <h3>Réussir l'examen de spécialisation de la CISR</h3>
+        <p>Le programme de spécialisation de la CISR permet aux Consultants Réglementés en Immigration (CRIC) d'obtenir un permis spécifique pour représenter des clients devant ce tribunal administratif.</p>
+        <ul class="prog-points">
+          <li>Contenu axé sur la procédure devant la CISR</li>
+          <li>Cas pratiques en droit des réfugiés</li>
+          <li>Stratégies de représentation devant le tribunal</li>
+          <li>Accès aux 500 questions pratiques</li>
+          <li>Progression claire et encadrée</li>
+        </ul>
+        <a href="#" class="prog-btn">Commencer ma préparation</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ POURQUOI ══ -->
+<section class="why-section" id="pourquoi">
+  <div class="why-mosaic">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" alt="">
+  </div>
+  <div class="why-content">
+    <div class="section-eyebrow"><div class="line"></div><span>Pourquoi choisir l'Académie</span></div>
+    <h2 class="section-title">Parce qu'un bon<br>consultant <em>agit.</em></h2>
+    <p class="section-body">Il ne se limite pas à apprendre la loi. Il analyse, structure et exécute chaque dossier avec rigueur et précision.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <h4>Pratique</h4>
+          <p>Chaque notion est abordée dans un contexte applicable, avec des cas concrets et des situations réelles.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <h4>Structuré</h4>
+          <p>Une progression claire et logique — vous savez quoi faire, dans quel ordre, et pour quelle raison.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <h4>Interactif</h4>
+          <p>Questions, scénarios et exercices intégrés pour valider votre compréhension tout au long du parcours.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div>
+          <h4>Professionnel</h4>
+          <p>Aligné avec les exigences concrètes du domaine — une méthode crédible, structurée et adaptée au terrain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RÉSULTATS ══ -->
+<section class="results-section" id="resultats">
+  <div class="results-bg"></div>
+  <div class="results-inner">
+    <div class="results-left">
+      <div class="section-eyebrow"><div class="line"></div><span>Résultats concrets</span></div>
+      <h2 class="section-title">Ce que vous<br><em>maîtriserez.</em></h2>
+      <p class="section-body">À la fin de la formation, vous serez en mesure d'intervenir avec rigueur dans la préparation de dossiers d'immigration.</p>
+      <div class="before-after">
+        <div class="ba-col">
+          <div class="ba-label">Avant</div>
+          <div class="ba-item">Compréhension partielle</div>
+          <div class="ba-item">Difficulté à structurer</div>
+          <div class="ba-item">Manque de clarté</div>
+          <div class="ba-item">Incertitude</div>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Après</div>
+          <div class="ba-item">Analyse complète</div>
+          <div class="ba-item">Méthode claire</div>
+          <div class="ba-item">Organisation solide</div>
+          <div class="ba-item">Confiance totale</div>
+        </div>
+      </div>
+    </div>
+    <div class="results-right">
+      <div class="result-point"><div class="rp-icon">→</div><p>Analyser un dossier et identifier les éléments clés</p></div>
+      <div class="result-point"><div class="rp-icon">→</div><p>Choisir les formulaires appropriés selon chaque situation</p></div>
+      <div class="result-point"><div class="rp-icon">→</div><p>Préparer et organiser un dossier complet, prêt à soumettre</p></div>
+      <div class="result-point"><div class="rp-icon">→</div><p>Structurer une argumentation cohérente et professionnelle</p></div>
+      <div class="result-point"><div class="rp-icon">→</div><p>Rédiger des lettres de présentation de qualité</p></div>
+      <div class="result-point"><div class="rp-icon">→</div><p>Éviter les erreurs fréquentes qui peuvent nuire à un dossier</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ À QUI ══ -->
+<section class="audience-section">
+  <div class="audience-img">
+    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80" alt="">
+  </div>
+  <div class="audience-content">
+    <div class="section-eyebrow" style="--gold:#c9a227"><div class="line" style="background:var(--navy)"></div><span style="color:var(--navy);opacity:.5;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase">À qui s'adresse</span></div>
+    <h2 class="section-title dark" style="font-size:46px">Cette formation<br><em style="color:var(--gold)">est pour vous</em><br>si…</h2>
+    <div class="audience-list">
+      <div class="audience-item"><div class="audience-item-dot"></div><p>Vous êtes Consultant Réglementé en Immigration et Citoyenneté (CRIC) et souhaitez valider vos heures de formation continue</p></div>
+      <div class="audience-item"><div class="audience-item-dot"></div><p>Vous voulez passer de la théorie à l'application concrète sur des dossiers réels</p></div>
+      <div class="audience-item"><div class="audience-item-dot"></div><p>Vous cherchez une méthode claire et structurée pour traiter des dossiers avec rigueur</p></div>
+      <div class="audience-item"><div class="audience-item-dot"></div><p>Vous voulez éviter les erreurs fréquentes dans la préparation et la présentation des demandes</p></div>
+      <div class="audience-item"><div class="audience-item-dot"></div><p>Vous souhaitez développer une approche professionnelle alignée avec les exigences du domaine</p></div>
+    </div>
+    <div class="audience-not" style="margin-top:16px;background:#f0ece4;border-left:2px solid var(--gold);color:#666">
+      <strong style="display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:8px;font-weight:600">À noter</strong>
+      Nos formations pratiques et de formation continue sont admissibles aux exigences du CCIC. La préparation à l'examen de spécialisation de la CISR n'est pas reconnue à titre de formation continue.
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUTILS ══ -->
+<section class="tools-section">
+  <div class="tools-inner">
+    <div class="tools-head">
+      <div class="section-eyebrow" style="justify-content:center"><div class="line"></div><span>Ce que vous obtenez</span></div>
+      <h2 class="section-title" style="text-align:center">Outils inclus dans<br><em>chaque formation.</em></h2>
+      <p class="section-body" style="text-align:center;max-width:540px">Une formation complète conçue pour vous offrir une compréhension claire et une application concrète du domaine de l'immigration.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-item">
+        <div class="tool-item-num">01</div>
+        <h4>Assistant intégré</h4>
+        <p>Réponses structurées avec références aux sources officielles d'IRCC. Comprenez non seulement la réponse, mais son fondement juridique.</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-item-num">02</div>
+        <h4>Cas pratiques réels</h4>
+        <p>Chaque module est basé sur des situations concrètes. Vous comprenez non seulement quoi faire, mais surtout comment le faire correctement.</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-item-num">03</div>
+        <h4>Banque de 500 questions</h4>
+        <p>Des questions conçues pour aller au-delà de la simple mémorisation et vous pousser à réfléchir comme un professionnel.</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-item-num">04</div>
+        <h4>Modèles de documents</h4>
+        <p>Lettres de présentation professionnelles, structures de dossiers et modèles prêts à personnaliser pour votre pratique.</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-item-num">05</div>
+        <h4>Références IRCC officielles</h4>
+        <p>Chaque réponse s'appuie sur des références précises incluant les articles de loi applicables et sources gouvernementales.</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-item-num">06</div>
+        <h4>Progression structurée</h4>
+        <p>Vous avancez à votre rythme avec une formation conçue pour être comprise, appliquée et intégrée progressivement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESSUS ══ -->
+<section class="process-section">
+  <div class="process-bg"></div>
+  <div class="process-inner">
+    <div class="process-head">
+      <div class="section-eyebrow"><div class="line"></div><span>Comment ça fonctionne</span></div>
+      <h2 class="section-title">Votre <em>progression.</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Accéder à votre espace</h4>
+        <p>Vous accédez à votre espace de formation personnel, structuré et organisé.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Suivre les modules</h4>
+        <p>Vous avancez de manière progressive, module par module, à votre rythme.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Appliquer sur des cas réels</h4>
+        <p>Vous appliquez chaque notion à travers des cas pratiques concrets.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Valider vos connaissances</h4>
+        <p>Exercises, questions et mises en situation pour confirmer votre maîtrise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq-section" id="faq">
+  <div class="faq-img">
+    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80" alt="">
+  </div>
+  <div class="faq-content">
+    <div class="section-eyebrow"><div class="line" style="background:var(--navy)"></div><span style="color:var(--navy);opacity:.5;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase">Questions fréquentes</span></div>
+    <h2 class="section-title dark" style="font-size:46px">Vos questions,<br><em style="color:var(--gold)">nos réponses.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          La formation est-elle adaptée aux débutants ?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Oui. Elle est conçue pour accompagner les personnes qui commencent, tout en étant suffisamment structurée pour apporter de la valeur aux personnes ayant déjà des bases.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          La formation est-elle reconnue ?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Les formations sont admissibles dans le cadre des exigences de formation continue, selon les critères en vigueur du Collège des consultants en immigration et en citoyenneté.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Combien de temps dure la formation ?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">La progression dépend de votre rythme. La structure vous permet d'avancer de manière claire et organisée, sans contrainte de temps fixe.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Est-ce que je peux appliquer directement après ?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Oui. L'objectif est précisément de vous permettre de développer des compétences applicables dans des situations réelles dès la fin de votre formation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="cta-divider"></div>
+    <h2>Ne restez pas dans<br><em>l'incertitude.</em></h2>
+    <p>Accédez à une formation structurée, pratique et conçue pour vous permettre de développer des compétences concrètes dans le domaine de l'immigration.</p>
+    <a href="#" class="btn-primary" style="font-size:14px;padding:20px 50px">Accéder à la formation</a>
+    <div class="cta-note">Formation continue admissible · Sources IRCC officielles · Assistant intégré</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="ft-logo">Académie de <span>l'Immigration</span></div>
+      <p class="ft-desc">Plateforme de formation spécialisée destinée aux consultants en immigration et aux personnes souhaitant le devenir. Formation admissible CCIC.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Programmes</h4>
+      <a href="#">Formations pratiques</a>
+      <a href="#">500 questions</a>
+      <a href="#">Préparation examens</a>
+    </div>
+    <div class="ft-col">
+      <h4>Navigation</h4>
+      <a href="#">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">FAQ</a>
+      <a href="#">Accéder à la formation</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Académie de l'Immigration — Tous droits réservés</span>
+    <span>Formation professionnelle en immigration au Canada</span>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
